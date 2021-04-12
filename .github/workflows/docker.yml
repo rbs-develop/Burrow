@@ -4,6 +4,7 @@ on: [push]
 
 env:
     IMAGE_NAME: rbsdevelop/burrow
+    IMAGE_VERSION: 1.3.6
 
 jobs:
   test:
@@ -30,7 +31,9 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: rbsdevelop/burrow:latest
+          tags: |
+            ${{ IMAGE_NAME }}:${{ IMAGE_VERSION }}
+            ${{ IMAGE_NAME }}:latest
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
