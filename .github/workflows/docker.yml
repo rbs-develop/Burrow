@@ -32,8 +32,8 @@ jobs:
         with:
           push: true
           tags: |
-            ${{ IMAGE_NAME }}:${{ IMAGE_VERSION }}
-            ${{ IMAGE_NAME }}:latest
+            ${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}
+            ${{ env.IMAGE_NAME }}:latest
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
